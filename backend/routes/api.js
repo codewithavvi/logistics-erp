@@ -1,9 +1,12 @@
 const express = require('express');
-     const router = express.Router();
+const router = express.Router();
+const authRoutes = require('./auth');
+const { protect, authorize } = require('../middleware/authMiddleware');
 
-     router.get('/test', (req, res) => {
-       res.json({ message: 'API is working' });
-     });
+router.use('/auth', authRoutes);
 
-     module.exports = router;
-     
+router.get('/test', protect, authorize('Admin', 'Manager'), (req, res) => {
+  res.json({ message: 'Protected API is working', user: req.user });
+});
+
+module.exports = router;
