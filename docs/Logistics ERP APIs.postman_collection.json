@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"driver1\",\r\n  \"email\": \"driver@example.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"Driver\"\r\n}",
+							"raw": "{\r\n  \"username\": \"admin1\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"Admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +76,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZjMGU1ZDI0NDNhNGFmZGFmY2M4YiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyMDk2MSwiZXhwIjoxNzQ4NDI0NTYxfQ.A_p-rVpHMtKSmtRn79q25tSBwRWoNQd9aFe5ix32Gx4",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
 								"type": "text"
 							}
 						],
@@ -90,6 +90,374 @@
 							"path": [
 								"api",
 								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerName\": \"John Doe\",\r\n  \"items\": [\r\n    { \"name\": \"Item 1\", \"quantity\": 2, \"price\": 50 },\r\n    { \"name\": \"Item 2\", \"quantity\": 1, \"price\": 100 }\r\n  ],\r\n  \"totalAmount\": 200,\r\n  \"warehouse\": \"6836eb6707d1dbd8bf4be161\",\r\n  \"driver\": \"6836eb7407d1dbd8bf4be163\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"status\": \"Shipped\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/orders/ORD-e3032c95/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"ORD-e3032c95",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Warehouses",
+			"item": [
+				{
+					"name": "Create Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Main Warehouse\",\r\n  \"location\": \"New York\",\r\n  \"capacity\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/warehouses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"warehouses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Warehouses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/warehouses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"warehouses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Create Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehicleId\": \"VEH-001\",\r\n  \"type\": \"Truck\",\r\n  \"capacity\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drivers",
+			"item": [
+				{
+					"name": "Create Driver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"licenseNumber\": \"LIC-12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/drivers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"drivers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Driver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"driverId\": \"6836eb7407d1dbd8bf4be163\",\r\n  \"vehicleId\": \"VEH-001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/drivers/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"drivers",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drivers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/drivers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"drivers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "Get Analytics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzZlYTY0MDdkMWRiZDhiZjRiZTE1ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0ODQyOTQyMywiZXhwIjoxNzQ4NDMzMDIzfQ.71Bo50sm4etQijglV5UyTGkpOfvxvgSl7lu3xguC8cw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/analytics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"analytics"
 							]
 						}
 					},
