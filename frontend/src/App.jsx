@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
       <Sidebar />
       <div className="flex-1">
         <Navbar />
-        {children}
+        <div className="p-4">{children}</div>
       </div>
     </div>
   ) : (
@@ -39,7 +39,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
             <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="/orders" element={<ProtectedRoute><OrderList /><OrderForm /></ProtectedRoute>} />
+            <Route path="/orders" element={<ProtectedRoute><div><OrderForm /><OrderList /></div></ProtectedRoute>} />
             <Route path="/warehouses" element={<ProtectedRoute><WarehouseList /></ProtectedRoute>} />
             <Route path="/vehicles" element={<ProtectedRoute><VehicleList /></ProtectedRoute>} />
             <Route path="/drivers" element={<ProtectedRoute><DriverList /></ProtectedRoute>} />

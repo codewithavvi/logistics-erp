@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-accent;
+}
+
+h1, h2, h3 {
+  @apply text-neutral font-bold;
+}
+
+.card {
+  @apply animate-fade-in;
+}
+
+.btn {
+  @apply transition-transform duration-200 hover:scale-105;
+}
